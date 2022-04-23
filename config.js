@@ -1,4 +1,4 @@
-const { NODE_ENV } = process.env;
+const { NODE_ENV, MYSQL_HOST_DEV, MYSQL_USER_DEV, MYSQL_PASSWORD_DEV, MYSQL_DATABASE_DEV } = process.env;
 
 console.log(NODE_ENV)
 const environments = {
@@ -6,10 +6,10 @@ const environments = {
     port: 5000,
     name: 'development',
     mysqlConfig: {
-      host: process.env.MYSQL_HOST_DEV,
-      user: process.env.MYSQL_USER_DEV,
-      password: process.env.MYSQL_PASSWORD_DEV,
-      database: process.env.MYSQL_DATABASE_DEV,
+      host: MYSQL_HOST_DEV,
+      user: MYSQL_USER_DEV,
+      password: MYSQL_PASSWORD_DEV,
+      database: MYSQL_DATABASE_DEV,
       timezone: 'utc',
       port: 3306,
     }

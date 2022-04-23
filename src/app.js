@@ -3,6 +3,8 @@ import config from "../config.js"
 import api from "./api/index.js";
 import logger from "morgan"
 import { ErrorsHandlerMiddleware } from "./middleware/index.js";
+import db from "../db/models/index.cjs";
+import { DatabaseUtil } from "./utils/index.js";
 
 
 class App {
@@ -12,6 +14,7 @@ class App {
     this.port = config.port || 5000;
     this.env = config.name === "production" ? true : false;
 
+	this.connectDB();
     this.initializeMiddlewares();
     this.initializeApi();
     this.initializeErrorHandling();
@@ -22,6 +25,16 @@ class App {
       console.log(`App listening on the port ${this.port}`);
     });
   }
+
+	async connectDB() {
+		try {
+			await DatabaseUtil.initialize();
+			await db.sequelize.authenticate();
+			console.log('DB Connection has been established successfully.');
+		} catch (error) {
+			console.error('Unable to connect to the database:', error);
+		}
+	}
 
   initializeMiddlewares() {
     this.app.use(express.json());
