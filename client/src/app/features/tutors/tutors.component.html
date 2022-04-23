@@ -1,0 +1,15 @@
+<div class="container">
+  <div>
+    <app-search (debounce)="onSearch($event)"></app-search>
+  </div>
+  <div *ngIf="!loading && !tutors?.length" fxLayoutAlign="center center" class="empty-placeholder">
+    <h2>No Results Found</h2>
+  </div>
+  <div *ngIf="tutors?.length">
+    <app-tutor-item *ngFor="let item of tutors" [item]= "item"></app-tutor-item>
+  </div>
+  <div *ngIf="loading" fxLayoutAlign="center center" class="margin-column-one-rem">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+
+</div>

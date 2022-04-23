@@ -21,7 +21,7 @@ class TutorsService {
       ]
     }
     
-    const result =  await User.findAll({
+    const { count, rows } =  await User.findAndCountAll({
       attributes: { 
         exclude: ['password', 'deletedAt', 'createdAt', 'updatedAt', 'email', 'countryId' , 'roleId', 'isActive'] 
       },
@@ -47,7 +47,7 @@ class TutorsService {
       offset,
       limit,
     });
-    return result;
+    return { count, rows};
   }
 }
 

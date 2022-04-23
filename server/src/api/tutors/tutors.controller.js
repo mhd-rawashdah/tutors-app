@@ -8,10 +8,12 @@ class TutorsController {
 
     async get(req, res, next) {
        try {
-        const result = await TutorsService.get(req.query);
+        const { count, rows} = await TutorsService.get(req.query);
         res.status(200).json({
             message: 'Hey this get tutors API',
-            data: result
+            data: rows,
+            success: true,
+            count
         })
        } catch (error) {
            next(error);

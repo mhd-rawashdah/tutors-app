@@ -1,0 +1,18 @@
+.mat-toolbar {
+  color: var(--title-color);
+  background: #ffffff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  z-index: 2;
+  padding: 0 1.5rem
+}
+
+
+.brand {
+  margin: 0 1rem;
+}
+
+.brand h1 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

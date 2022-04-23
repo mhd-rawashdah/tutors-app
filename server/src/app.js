@@ -5,7 +5,7 @@ import logger from "morgan"
 import { ErrorsHandlerMiddleware } from "./middleware/index.js";
 import db from "../db/models/index.cjs";
 import { DatabaseUtil } from "./utils/index.js";
-
+import cors from "cors";
 
 class App {
 
@@ -39,12 +39,12 @@ class App {
   initializeMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-		
-		if (this.env) {
-			this.app.use(logger('combined'))
-		} else {
-			this.app.use(logger('dev'));
-		}
+	this.app.use(cors())
+	if (this.env) {
+		this.app.use(logger('combined'))
+	} else {
+		this.app.use(logger('dev'));
+	}
   }
 
   initializeApi() {

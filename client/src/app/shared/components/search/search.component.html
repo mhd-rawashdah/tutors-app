@@ -1,0 +1,14 @@
+<form  fxLayout="row" class="container" fxLayoutAlign="start start" fxLayoutAlign.xs="center start"
+   (ngSubmit)="onSubmit()" fxFlex="100">
+  <div class="search-container" fxLayout="row"  fxLayoutAlign="start center">
+    <div fxLayoutAlign="start start">
+      <mat-icon class="icon-color">search</mat-icon>
+    </div>
+    <input class="search-field" matInput [placeholder]="placeholder" type="text" [formControl]="searchCtrl" autocomplete="off" (keyup)="onKey($event)">
+    <button mat-icon-button class="clear-btn" type="button" *ngIf="searchCtrl.value" (click)="onClear()">
+      <mat-icon class="icon-color">
+        close
+      </mat-icon>
+    </button>
+  </div>
+</form>

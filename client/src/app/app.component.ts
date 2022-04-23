@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppScrollService } from './shared/services/app-scroll.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+
+  constructor(
+    private appScrollService: AppScrollService,
+  ) {}
+
+  onScrollDown() {
+    console.log('Scrolling....');
+    this.appScrollService.triggerScrollDown();
+  }
 }
