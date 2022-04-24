@@ -1,4 +1,4 @@
-<div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column">
+<div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" (click)="navigateToProfile(item?.id)">
   <div fxLayout="column" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center">
     <div class="image-holder">
       <img [src]="item?.imageURL" *ngIf="item?.imageURL">
@@ -8,11 +8,11 @@
     <h1 >{{item?.firstName}} {{item?.lastName}}</h1>
     <div class="margin-column-half-rem"  fxLayout="row" fxLayoutAlign="start center">
       <div fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon>monetization_on_outline</mat-icon>
+        <mat-icon class="blue-color">monetization_on_outline</mat-icon>
         <span class="font-size-15 margin-row-half-rem"> <strong>{{item?.tutor?.pricePerHour | currency}}</strong> per hour</span>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon>star</mat-icon>
+        <mat-icon class="secondary-color">star</mat-icon>
         <span class="font-size-15 margin-row-half-rem"> <strong>{{item?.tutor?.rating}}</strong> ({{item?.tutor?.reviewsCount}} reviews)</span>
       </div>
     </div>

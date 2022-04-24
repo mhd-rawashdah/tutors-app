@@ -12,6 +12,8 @@ class TutorsRoute {
 
     initialize() {
         this.router.get(this.path, controller.get);
+
+        this.router.get(`${this.path}/:id`, controller.getById);
     }
 }
 

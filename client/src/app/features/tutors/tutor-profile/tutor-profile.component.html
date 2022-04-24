@@ -1,0 +1,62 @@
+<div class="container">
+  <div *ngIf="loading" fxLayoutAlign="center center" class="margin-column-two-rem">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+  <div *ngIf="!loading" fxLayout="row wrap">
+    <div class="section-container" fxLayout="column" fxFlex="30" fxFlex.lt-md="100" fxLayoutAlign="start center">
+      <div class="image-holder">
+        <img [src]="user?.imageURL" *ngIf="user?.imageURL" />
+      </div>
+      <div class="margin-top-one-rem text-center">
+        <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+      </div>
+
+      <div class="margin-top-one-rem">
+        <span class="font-weight-bold blue-color">{{user.tutor?.yearsOfExperience}} years of experience</span>
+      </div>
+
+      <div class="margin-top-one-rem" fxLayout ="row wrap" fxLayoutAlign="center center">
+        <div class="margin-column-half-rem label-color" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="blue-color">monetization_on_outline</mat-icon>
+          <span class="font-size-15 margin-row-half-rem"> <strong>{{ user?.tutor?.pricePerHour | currency}}/hour</strong></span>
+        </div>
+        <div class="margin-column-half-rem label-color" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="secondary-color">star</mat-icon>
+          <span class="font-size-15 margin-row-half-rem"> <strong>{{user?.tutor?.rating}}</strong> ({{user?.tutor?.reviewsCount}} reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="section-container" fxFlex fxFlex.lt-md="100" fxLayoutAlign="start start" fxLayout="column">
+      <div class="padding-column-one-rem">
+        <h1 class="font-weight-bold">About Me</h1>
+        <div class="margin-column-one-rem">
+          <h3 class="font-weight-bold">{{user?.tutor?.jobTitle}}</h3>
+        </div>
+        <div class="margin-top-half-rem">
+          <p>{{user?.tutor?.overview}}</p>
+        </div>
+      </div>
+      <div class="border-top full-width padding-column-one-rem" *ngIf="user?.tutor?.qualifications?.length">
+        <h1 class="font-weight-bold">Qualifications</h1>
+        <div class="margin-top-one-rem">
+          <div class="margin-column-one-rem" fxLayout="column" *ngFor="let qualification of user?.tutor?.qualifications">
+            <h4 class="font-weight-bold">{{qualification?.field}}</h4>
+            <span>{{qualification?.school}}</span>
+            <span class="label-color">{{qualification?.startDate | date}}</span>
+            <p>{{ qualification?.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-top full-width padding-column-one-rem" *ngIf="user?.tutor?.subjects?.length">
+        <h1 class="font-weight-bold">Subjects</h1>
+        <div class="margin-top-one-rem">
+          <mat-chip-list>
+            <mat-chip class="chip" *ngFor="let subject of user?.tutor?.subjects">
+              {{subject?.name}}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

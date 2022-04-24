@@ -36,7 +36,6 @@ class TutorsService {
                     as: 'subjects',
                 }
             ]
-
         },
         {
             model: Country,
@@ -46,8 +45,41 @@ class TutorsService {
       where,
       offset,
       limit,
+      order: [
+        [{ model: Tutor, as: 'tutor'},'rating', 'DESC'],
+        [{ model: Tutor, as: 'tutor'},'pricePerHour', 'DESC'],
+      ]
     });
     return { count, rows};
+  }
+
+  async getById(tutorId) {
+    const result =  await User.findOne({
+      attributes: { 
+        exclude: ['password', 'deletedAt', 'createdAt', 'updatedAt', 'email', 'countryId' , 'roleId', 'isActive'] 
+      },
+      include: [
+        {
+            model:  Tutor,
+            as: 'tutor',
+            attributes: { exclude: ['deletedAt', 'createdAt', 'updatedAt', 'verifiedBy', 'userId'] },
+            include: [
+                {
+                    model: Subject,
+                    as: 'subjects',
+                }
+            ]
+        },
+        {
+            model: Country,
+            as: 'country'
+        }
+      ],
+      where : {
+        id: tutorId
+      }
+    });
+    return result;
   }
 }
 

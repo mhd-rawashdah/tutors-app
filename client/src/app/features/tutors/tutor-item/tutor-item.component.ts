@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/interfaces/user';
 
 @Component({
@@ -9,9 +10,15 @@ import { User } from 'src/app/core/interfaces/user';
 export class TutorItemComponent implements OnInit {
 
   @Input() item: User = { };
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  navigateToProfile(tutorId: any): void {
+    this.router.navigate(['/tutors/', tutorId]);
   }
 
 }

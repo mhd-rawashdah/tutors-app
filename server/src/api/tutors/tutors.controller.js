@@ -10,7 +10,6 @@ class TutorsController {
        try {
         const { count, rows} = await TutorsService.get(req.query);
         res.status(200).json({
-            message: 'Hey this get tutors API',
             data: rows,
             success: true,
             count
@@ -20,7 +19,18 @@ class TutorsController {
        }
      }
 
-    getById(req, res, next) {}
+    async getById(req, res, next) {
+        try {
+            const tutorId = req.params.id;
+            const result = await TutorsService.getById(tutorId);
+            res.status(200).json({
+                data: result,
+                success: true,
+            })
+           } catch (error) {
+               next(error);
+           }
+    }
 
     delete(req, res, next) {}
 }

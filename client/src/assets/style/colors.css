@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #18586c;
-  --primary-dark-color: #134859;
+  --primary-color: #1888aa;
+  --primary-dark-color: #097092;
   --secondary-color: #ffa600;
   --light-gray-color: #e9eaf3;
   --gray-color: #f7f8ff;
@@ -11,4 +11,38 @@
   --title-color: #08262e;
   --label-color: #9ca1b3;
   --light-green-color: #e3f2fd;
+}
+
+
+.blue-color {
+  color: var(--blue-color) !important;;
+}
+
+.title-color {
+  color: var(--title-color) !important;;
+}
+
+
+.red-color {
+  color: var(--red-color) !important;
+}
+
+.green-color {
+  color: var(--green-color) !important;;
+}
+
+.secondary-color {
+  color: var(--secondary-color) !important;
+}
+
+.label-color {
+  color: var(--label-color) !important;
+}
+
+.gray-color {
+  color: var(--gray-color) !important;
+}
+
+.light-gray-color {
+  color: var(--light-gray-color) !important;
 }

@@ -8,12 +8,14 @@ import { TutorItemComponent } from './tutor-item/tutor-item.component';
 import { AppMaterialModule } from 'src/app/shared/app-material/app-material.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SearchModule } from 'src/app/shared/components/search/search.module';
+import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
 
 
 @NgModule({
   declarations: [
     TutorsComponent,
-    TutorItemComponent
+    TutorItemComponent,
+    TutorProfileComponent
   ],
   imports: [
     CommonModule,

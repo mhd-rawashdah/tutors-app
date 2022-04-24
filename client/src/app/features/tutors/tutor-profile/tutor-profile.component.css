@@ -1,19 +1,13 @@
 .container {
-  margin: 1rem 0.2rem;
-  /* height: 16rem; */
+  width: 70%;
+  margin: auto;
+}
+
+.section-container {
   padding: 1.5rem;
   border: solid 1px #E0E0E0;
   background: #ffffff;
-  transition: 0.3s;
-  cursor: pointer;
 }
-
-.container:hover {
-  border-left: solid 4px #48a240;
-  margin-left: 10px;
-  margin-right: -10px;
-}
-
 .image-holder {
   width: 8rem;
   height: 8rem;
@@ -28,14 +22,19 @@
   height: 100%;
 }
 
-.mat-icon {
-  color: rgb(184, 184, 184);
+.light-text {
+  color: var(--label-color);
+}
+
+.border-top {
+  border-top: solid 1px #E0E0E0;
+
 }
 
 
 @media screen and (max-width: 900px) {
   .container {
-    height: 100%;
+    width: 100%;
   }
 
 }

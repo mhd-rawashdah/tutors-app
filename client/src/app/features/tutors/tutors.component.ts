@@ -19,7 +19,7 @@ export class TutorsComponent implements OnInit, OnDestroy {
   notscrolly = false;
   search: string = "";
   page = 1;
-  limit = 20;
+  limit = 5;
 
   subscriptions: Subscription[] = [];
   constructor(

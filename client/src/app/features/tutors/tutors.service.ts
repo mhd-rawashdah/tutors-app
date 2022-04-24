@@ -34,8 +34,8 @@ export class TutorsService extends TutorModel {
     return this.http.get(TUTORS_URL(''), {params: {...params}})
   }
 
-  public getById(): Observable<Response> {
-    throw new Error('Method not implemented.');
+  public getById(tutorId: string): Observable<any> {
+    return this.http.get(TUTORS_URL(tutorId));
   }
 
 }
