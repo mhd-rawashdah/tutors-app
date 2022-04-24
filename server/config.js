@@ -1,6 +1,5 @@
 const { NODE_ENV, MYSQL_HOST_DEV, MYSQL_USER_DEV, MYSQL_PASSWORD_DEV, MYSQL_DATABASE_DEV } = process.env;
 
-console.log(NODE_ENV)
 const environments = {
   dev: {
     port: 5000,

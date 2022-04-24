@@ -9,7 +9,8 @@
     "dev": "nodemon src/index.js",
     "migration": "npx sequelize-cli db:migrate",
     "seeds": "npx sequelize-cli db:seed:all",
-    "seeds:undo:all": "npx sequelize-cli db:seed:undo:all"
+    "seeds:undo:all": "npx sequelize-cli db:seed:undo:all",
+    "create:db": "node db/init.js"
   },
   "author": "Mohammad Rawashdah",
   "license": "ISC",
