@@ -1,6 +1,12 @@
 Tutors App (Backend & Client Side)
 =======
 
+Demo
+----------
+
+Here the demo link deployed to Heroku:
+https://tutors-zone.herokuapp.com/
+
 Prerequisite
 ---------------
 * Nodejs >= v16.0.0
