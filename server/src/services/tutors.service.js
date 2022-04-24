@@ -65,8 +65,12 @@ class TutorsService {
             attributes: { exclude: ['deletedAt', 'createdAt', 'updatedAt', 'verifiedBy', 'userId'] },
             include: [
                 {
-                    model: Subject,
-                    as: 'subjects',
+                  model: Subject,
+                  as: 'subjects',
+                },
+                {
+                  model: Qualification,
+                  as: 'qualifications',
                 }
             ]
         },
