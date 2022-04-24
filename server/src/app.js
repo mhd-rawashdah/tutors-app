@@ -6,7 +6,11 @@ import { ErrorsHandlerMiddleware } from "./middleware/index.js";
 import db from "../db/models/index.cjs";
 import { DatabaseUtil } from "./utils/index.js";
 import cors from "cors";
-
+import hpp from "hpp";
+import path from "path";
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 class App {
 
   constructor(api) {
@@ -15,7 +19,8 @@ class App {
     this.env = config.name === "production" ? true : false;
 
 	this.connectDB();
-    this.initializeMiddlewares();
+		this.initializeMiddlewares();
+		this.serveStaticFiles();
     this.initializeApi();
     this.initializeErrorHandling();
   }
@@ -39,18 +44,30 @@ class App {
   initializeMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-	this.app.use(cors())
-	if (this.env) {
-		this.app.use(logger('combined'))
-	} else {
-		this.app.use(logger('dev'));
-	}
+		this.app.use(cors())
+		if (this.env) {
+			this.app.use(logger('combined'));
+			this.app.use(hpp());
+		} else {
+			this.app.use(logger('dev'));
+		}
   }
 
   initializeApi() {
 		this.app.use("/api/v1/", api);
+
+		this.app.get('/*', (req, res) => {
+			res.sendFile(path.join(__dirname, '../../client/dist/client/index.html'));
+		});
 	}
 
+	serveStaticFiles() {
+	
+
+		// this.app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+		this.app.use(express.static(path.join(__dirname, '../../client/dist/client')));
+	}
   initializeErrorHandling() {
 		this.app.use(ErrorsHandlerMiddleware.notFound);
 		this.app.use(ErrorsHandlerMiddleware.errorHandle);
